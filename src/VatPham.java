@@ -23,10 +23,12 @@ public abstract class VatPham {
     }
 
     public double tinhSucCongPha(){
+
         return this.chiSoSucManh * this.heSoSucManh;
     }
 
     public double tinhSoVangDeMua(){
+
         return this.tinhSucCongPha() * this.soVang;
     }
 

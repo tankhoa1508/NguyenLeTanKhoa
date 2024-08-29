@@ -39,12 +39,20 @@ public class DSVatPham {
         System.out.println("######################");
     }
 
-    public void cau3(){
-        Optional<VatPham> vatPham = arr.stream()
-                .max(Comparator.comparingDouble(VatPham::tinhSoVangDeMua));
-        System.out.println("Vật phẩm nhiều vàng nhất là: " + vatPham.orElse(null).tenVatPham);
-    }
+//    public void cau3(){
+//        Optional<VatPham> vatPham = arr.stream()
+//                .max(Comparator.comparingDouble(VatPham::tinhSoVangDeMua));
+//        System.out.println("Vật phẩm nhiều vàng nhất là: " + vatPham.orElse(null).tenVatPham);
+//    }
 
+    public VatPham cau3() {
+        Optional<VatPham> vatphamnhieunhat = arr.stream()
+                .filter(vp -> vp instanceof VatPham)
+                .map(vp -> (VatPham) vp)
+                .max(Comparator.comparingDouble(VatPham::tinhSoVangDeMua));
+
+        return vatphamnhieunhat.orElse(null);
+    }
 
     public float tinhTongVang(){
         float sum=0;
